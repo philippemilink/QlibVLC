@@ -23,6 +23,7 @@ QlibVLC: a C++ wrapper of libVLC for Qt, with audio part only.
 
 #include <QObject>
 #include <QMessageBox>
+#include <QFileInfo>
 
 #include <vlc/vlc.h>
 
@@ -48,6 +49,7 @@ class QlibVLC : public QObject
     QString album();
     int year();
     QString artist();
+    QString title();
     void ejectMedia();
 
 
@@ -66,6 +68,7 @@ class QlibVLC : public QObject
     libvlc_event_manager_t* m_eventManager;
     libvlc_media_t* m_media;
     bool m_issetMedia;
+    QString m_path;
 };
 
 #endif // QLIBVLC_H

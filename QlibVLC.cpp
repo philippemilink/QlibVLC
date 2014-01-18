@@ -56,8 +56,9 @@ int QlibVLC::getDuration(QString path)
 
 void QlibVLC::setMedia(QString path)
 {
+    m_path = path;
     //m_media = libvlc_media_new_path(m_vlc, path.replace("/", "\\\\").toStdString().c_str());
-    m_media = libvlc_media_new_path(m_vlc, path.toStdString().c_str());
+    m_media = libvlc_media_new_path(m_vlc, m_path.toStdString().c_str());
     libvlc_media_parse(m_media);
     m_player = libvlc_media_player_new_from_media(m_media);
     m_eventManager = libvlc_media_player_event_manager(m_player);
@@ -157,6 +158,13 @@ int QlibVLC::year()
     {
         return yearNumberString.toInt();
     }
+}
+
+
+QString QlibVLC::title()
+{
+    QString title = libvlc_media_get_meta(m_media, libvlc_meta_Title);
+    return title;
 }
 
 

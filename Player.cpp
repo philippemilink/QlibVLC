@@ -53,6 +53,7 @@ void Player::on_buttonOpenFile_clicked()
 
     ui->lineEditPath->setText(filePath);
 
+    ui->valueTitle->setText(m_vlc->title());
     ui->valueAlbum->setText(m_vlc->album());
     ui->valueArtist->setText(m_vlc->artist());
     ui->valueTotalTime->setText(QString::number(m_vlc->duration()));
@@ -77,6 +78,7 @@ void Player::on_buttonEject_clicked()
 
     ui->lineEditPath->setText("Select an audio file...");
 
+    ui->valueTitle->setText("");
     ui->valueAlbum->setText("");
     ui->valueArtist->setText("");
     ui->valueTotalTime->setText("");
