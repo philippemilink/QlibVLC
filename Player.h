@@ -46,6 +46,7 @@ class Player : public QWidget
     void timeChanged(float newTime);
     void on_buttonPlay_clicked();
     void on_buttonPause_clicked();
+    void on_buttonStop_clicked();
     
 
     private:

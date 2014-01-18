@@ -55,6 +55,7 @@ class QlibVLC : public QObject
 
     public slots:
     void changePosition(float value);
+    void stop();
 
 
     signals:

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>585</width>
+    <width>650</width>
     <height>180</height>
    </rect>
   </property>
@@ -18,13 +18,13 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>585</width>
+    <width>650</width>
     <height>180</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>585</width>
+    <width>650</width>
     <height>180</height>
    </size>
   </property>
@@ -34,7 +34,7 @@
   <widget class="QToolButton" name="buttonOpenFile">
    <property name="geometry">
     <rect>
-     <x>500</x>
+     <x>560</x>
      <y>10</y>
      <width>26</width>
      <height>29</height>
@@ -49,7 +49,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>481</width>
+     <width>541</width>
      <height>31</height>
     </rect>
    </property>
@@ -66,7 +66,7 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>530</x>
+     <x>590</x>
      <y>10</y>
      <width>51</width>
      <height>31</height>
@@ -136,7 +136,7 @@
     <rect>
      <x>280</x>
      <y>80</y>
-     <width>95</width>
+     <width>41</width>
      <height>41</height>
     </rect>
    </property>
@@ -150,9 +150,9 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>130</y>
-     <width>95</width>
+     <x>330</x>
+     <y>80</y>
+     <width>91</width>
      <height>41</height>
     </rect>
    </property>
@@ -172,7 +172,7 @@
   <widget class="QLabel" name="labelTotalTime">
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>440</x>
      <y>90</y>
      <width>91</width>
      <height>21</height>
@@ -185,7 +185,7 @@
   <widget class="QLabel" name="labelPlayedTime">
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>440</x>
      <y>140</y>
      <width>91</width>
      <height>21</height>
@@ -250,7 +250,7 @@
   <widget class="QLabel" name="valueTotalTime">
    <property name="geometry">
     <rect>
-     <x>480</x>
+     <x>540</x>
      <y>90</y>
      <width>101</width>
      <height>21</height>
@@ -263,7 +263,7 @@
   <widget class="QLabel" name="valuePlayedTime">
    <property name="geometry">
     <rect>
-     <x>480</x>
+     <x>540</x>
      <y>140</y>
      <width>101</width>
      <height>21</height>
@@ -297,6 +297,31 @@
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buttonStop">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>130</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Stop</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+   <property name="default">
+    <bool>false</bool>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
    </property>
   </widget>
  </widget>

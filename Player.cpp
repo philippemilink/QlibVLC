@@ -107,6 +107,7 @@ void Player::on_buttonPlay_clicked()
     m_vlc->play();
     ui->buttonPlay->setEnabled(false);
     ui->buttonPause->setEnabled(true);
+    ui->buttonStop->setEnabled(true);
 }
 
 
@@ -122,4 +123,15 @@ void Player::on_buttonPause_clicked()
         ui->buttonPause->setText("Set pause");
         m_vlc->pause(false);
     }
+}
+
+
+void Player::on_buttonStop_clicked()
+{
+    m_vlc->stop();
+    ui->buttonPlay->setEnabled(true);
+    ui->buttonPause->setEnabled(false);
+    ui->buttonStop->setEnabled(false);
+
+    ui->valuePlayedTime->setText("");
 }

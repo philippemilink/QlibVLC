@@ -178,3 +178,9 @@ void QlibVLC::ejectMedia()
         m_issetMedia = false;
     }
 }
+
+
+void QlibVLC::stop()
+{
+    libvlc_media_player_stop(m_player);
+}
