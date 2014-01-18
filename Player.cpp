@@ -25,7 +25,7 @@ Player::Player(QWidget *parent) : QWidget(parent), ui(new Ui::Player)
 {
     ui->setupUi(this);
     m_vlc = new QlibVLC();
-    connect(m_vlc, SIGNAL(positionChanged(float)), this, SLOT(timeChanged(float)));
+    connect(m_vlc, SIGNAL(positionChanged(int)), this, SLOT(timeChanged(int)));
 
     m_fileLoaded = false;
 }
@@ -96,7 +96,7 @@ void Player::on_buttonEject_clicked()
 }
 
 
-void Player::timeChanged(float newTime)
+void Player::timeChanged(int newTime)
 {
     ui->valuePlayedTime->setText(QString::number(newTime));
 }

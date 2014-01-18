@@ -94,7 +94,9 @@ void QlibVLC::callbackEndTrack(const libvlc_event_t* event, void* data)
 
 void QlibVLC::emitPositionChanged()
 {
-    emit positionChanged(libvlc_media_player_get_position(m_player));
+    float positionFloat = libvlc_media_player_get_position(m_player);
+    int positionInt = positionFloat * libvlc_media_get_duration(m_media);
+    emit positionChanged(positionInt);
 }
 
 

@@ -59,7 +59,7 @@ class QlibVLC : public QObject
 
 
     signals:
-    void positionChanged(float newPosition);
+    void positionChanged(int newPosition);
     void endTrack();
 
 

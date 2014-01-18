@@ -43,7 +43,7 @@ class Player : public QWidget
     public slots:
     void on_buttonOpenFile_clicked();
     void on_buttonEject_clicked();
-    void timeChanged(float newTime);
+    void timeChanged(int newTime);
     void on_buttonPlay_clicked();
     void on_buttonPause_clicked();
     void on_buttonStop_clicked();
