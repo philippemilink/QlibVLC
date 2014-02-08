@@ -168,7 +168,14 @@ int QlibVLC::year()
 QString QlibVLC::title()
 {
     QString title = libvlc_media_get_meta(m_media, libvlc_meta_Title);
-    return title;
+
+    QFileInfo* fileInfo = new QFileInfo(m_path);
+    if(title==fileInfo->fileName())
+    {
+        return fileInfo->baseName();
+    }
+    else
+        return title;
 }
 
 
