@@ -36,6 +36,8 @@ Player::Player(QWidget *parent) : QWidget(parent), ui(new Ui::Player)
         ui->comboBoxOutputs->addItem(outputs[i].description);
     }
     connect(ui->comboBoxOutputs, SIGNAL(currentIndexChanged(QString)), this, SLOT(outputSelected_change(QString)));
+
+    connect(ui->sliderVolume, SIGNAL(sliderMoved(int)), m_vlc, SLOT(setVolume(int)));
 }
 
 
@@ -100,6 +102,7 @@ void Player::on_buttonEject_clicked()
     ui->buttonPause->setText("Set pause");
     ui->buttonPlay->setEnabled(false);
     ui->comboBoxOutputs->setEnabled(true);
+    ui->sliderVolume->setEnabled(false);
 
     m_fileLoaded = false;
 }
@@ -118,6 +121,7 @@ void Player::on_buttonPlay_clicked()
     ui->buttonPause->setEnabled(true);
     ui->buttonStop->setEnabled(true);
     ui->comboBoxOutputs->setEnabled(false);
+    ui->sliderVolume->setEnabled(true);
 }
 
 
@@ -143,6 +147,7 @@ void Player::on_buttonStop_clicked()
     ui->buttonPause->setEnabled(false);
     ui->buttonStop->setEnabled(false);
     ui->comboBoxOutputs->setEnabled(true);
+    ui->sliderVolume->setEnabled(false);
 
     ui->valuePlayedTime->setText("");
 }

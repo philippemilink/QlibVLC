@@ -223,3 +223,18 @@ void QlibVLC::setOutput(QString name)
 {
     libvlc_audio_output_set(m_player, name.toStdString().c_str());
 }
+
+
+int QlibVLC::getVolume()
+{
+    return libvlc_audio_get_volume(m_player);
+}
+
+
+void QlibVLC::setVolume(int newVolume)
+{
+    if(newVolume<0 || newVolume>100)
+        return;
+
+    libvlc_audio_set_volume(m_player, newVolume);
+}

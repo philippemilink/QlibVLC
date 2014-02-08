@@ -64,10 +64,13 @@ class QlibVLC : public QObject
     std::vector<QlibVLCOutput> getOutputs();
     void setOutput(QString name);
 
+    int getVolume();
+
 
     public slots:
     void changePosition(float value);
     void stop();
+    void setVolume(int newVolume);
 
 
     signals:
