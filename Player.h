@@ -20,6 +20,8 @@ A simple audio player to illustrate how works QlibVLC
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <vector>
+
 #include <QWidget>
 #include <QFileDialog>
 
@@ -47,6 +49,7 @@ class Player : public QWidget
     void on_buttonPlay_clicked();
     void on_buttonPause_clicked();
     void on_buttonStop_clicked();
+    void outputSelected_change(QString newOutput);
     
 
     private:

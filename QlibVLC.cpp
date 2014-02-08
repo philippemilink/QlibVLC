@@ -22,6 +22,8 @@ QlibVLC: a C++ wrapper of libVLC for Qt, with audio part only.
 QlibVLC::QlibVLC()
 {
     m_vlc = libvlc_new(0, NULL); // Initialize libVLC
+    m_player = libvlc_media_player_new(m_vlc);
+
     m_issetMedia = false;
 }
 
@@ -60,7 +62,7 @@ void QlibVLC::setMedia(QString path)
     //m_media = libvlc_media_new_path(m_vlc, path.replace("/", "\\\\").toStdString().c_str());
     m_media = libvlc_media_new_path(m_vlc, m_path.toStdString().c_str());
     libvlc_media_parse(m_media);
-    m_player = libvlc_media_player_new_from_media(m_media);
+    libvlc_media_player_set_media(m_player, m_media);
     m_eventManager = libvlc_media_player_event_manager(m_player);
     m_issetMedia = true;
 }
@@ -175,8 +177,7 @@ void QlibVLC::ejectMedia()
     if(m_issetMedia)
     {
         libvlc_media_player_stop(m_player);
-        libvlc_media_player_release(m_player);
-        libvlc_media_release(m_media);
+        libvlc_media_player_retain(m_player);
         m_issetMedia = false;
     }
 }
@@ -185,4 +186,33 @@ void QlibVLC::ejectMedia()
 void QlibVLC::stop()
 {
     libvlc_media_player_stop(m_player);
+}
+
+
+std::vector<QlibVLCOutput> QlibVLC::getOutputs()
+{
+    std::vector<QlibVLCOutput> array;
+
+    libvlc_audio_output_t* outputs = libvlc_audio_output_list_get(m_vlc);
+
+    while(outputs!=NULL)
+    {
+        QlibVLCOutput output;
+        output.description = outputs->psz_description;
+        output.name = outputs->psz_name;
+
+        array.push_back(output);
+
+        outputs = outputs->p_next;
+    }
+
+    libvlc_audio_output_list_release(outputs);
+
+    return array;
+}
+
+
+void QlibVLC::setOutput(QString name)
+{
+    libvlc_audio_output_set(m_player, name.toStdString().c_str());
 }

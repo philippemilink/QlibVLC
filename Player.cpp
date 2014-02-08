@@ -28,6 +28,14 @@ Player::Player(QWidget *parent) : QWidget(parent), ui(new Ui::Player)
     connect(m_vlc, SIGNAL(positionChanged(int)), this, SLOT(timeChanged(int)));
 
     m_fileLoaded = false;
+
+    std::vector<QlibVLCOutput> outputs = m_vlc->getOutputs();
+    ui->comboBoxOutputs->addItem("No specified");
+    for(int i=0; i<outputs.size(); i++)
+    {
+        ui->comboBoxOutputs->addItem(outputs[i].description);
+    }
+    connect(ui->comboBoxOutputs, SIGNAL(currentIndexChanged(QString)), this, SLOT(outputSelected_change(QString)));
 }
 
 
@@ -91,6 +99,7 @@ void Player::on_buttonEject_clicked()
     ui->buttonPause->setEnabled(false);
     ui->buttonPause->setText("Set pause");
     ui->buttonPlay->setEnabled(false);
+    ui->comboBoxOutputs->setEnabled(true);
 
     m_fileLoaded = false;
 }
@@ -108,6 +117,7 @@ void Player::on_buttonPlay_clicked()
     ui->buttonPlay->setEnabled(false);
     ui->buttonPause->setEnabled(true);
     ui->buttonStop->setEnabled(true);
+    ui->comboBoxOutputs->setEnabled(false);
 }
 
 
@@ -132,6 +142,22 @@ void Player::on_buttonStop_clicked()
     ui->buttonPlay->setEnabled(true);
     ui->buttonPause->setEnabled(false);
     ui->buttonStop->setEnabled(false);
+    ui->comboBoxOutputs->setEnabled(true);
 
     ui->valuePlayedTime->setText("");
+}
+
+
+void Player::outputSelected_change(QString newOutput)
+{
+    ui->comboBoxOutputs->removeItem(ui->comboBoxOutputs->findText("No specified"));
+    std::vector<QlibVLCOutput> outputs = m_vlc->getOutputs();
+    for(int i=0; i<outputs.size(); i++)
+    {
+        if(outputs[i].description==newOutput)
+        {
+            m_vlc->setOutput(outputs[i].name);
+            break;
+        }
+    }
 }
