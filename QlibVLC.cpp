@@ -25,6 +25,8 @@ QlibVLC::QlibVLC()
     m_player = libvlc_media_player_new(m_vlc);
 
     m_issetMedia = false;
+
+    connect(this, SIGNAL(endTrack()), this, SLOT(stop()));
 }
 
 

@@ -26,7 +26,7 @@ Player::Player(QWidget *parent) : QWidget(parent), ui(new Ui::Player)
     ui->setupUi(this);
     m_vlc = new QlibVLC();
     connect(m_vlc, SIGNAL(positionChanged(int)), this, SLOT(timeChanged(int)));
-    connect(m_vlc, SIGNAL(endTrack()), qApp, SLOT(quit()));
+    connect(m_vlc, SIGNAL(endTrack()), this, SLOT(endPlaying()));
 
     m_fileLoaded = false;
 
@@ -166,4 +166,20 @@ void Player::outputSelected_change(QString newOutput)
             break;
         }
     }
+}
+
+
+void Player::endPlaying()
+{
+    ui->valuePlayedTime->setText("");
+
+    //m_vlc->stop();
+
+    ui->buttonEject->setEnabled(true);
+    ui->buttonPause->setEnabled(false);
+    ui->buttonPlay->setEnabled(true);
+    ui->buttonStop->setEnabled(false);
+    ui->comboBoxOutputs->setEnabled(true);
+    ui->sliderVolume->setEnabled(false);
+
 }

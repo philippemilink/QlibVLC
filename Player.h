@@ -50,6 +50,7 @@ class Player : public QWidget
     void on_buttonPause_clicked();
     void on_buttonStop_clicked();
     void outputSelected_change(QString newOutput);
+    void endPlaying();
     
 
     private:
