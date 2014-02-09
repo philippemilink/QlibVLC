@@ -26,6 +26,7 @@ Player::Player(QWidget *parent) : QWidget(parent), ui(new Ui::Player)
     ui->setupUi(this);
     m_vlc = new QlibVLC();
     connect(m_vlc, SIGNAL(positionChanged(int)), this, SLOT(timeChanged(int)));
+    connect(m_vlc, SIGNAL(endTrack()), qApp, SLOT(quit()));
 
     m_fileLoaded = false;
 

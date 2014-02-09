@@ -59,8 +59,7 @@ int QlibVLC::getDuration(QString path)
 void QlibVLC::setMedia(QString path)
 {
     m_path = path;
-    //m_media = libvlc_media_new_path(m_vlc, path.replace("/", "\\\\").toStdString().c_str());
-    m_media = libvlc_media_new_path(m_vlc, m_path.toStdString().c_str());
+    m_media = libvlc_media_new_path(m_vlc, QDir::toNativeSeparators(path).toStdString().c_str()); // Should work everywhere
     libvlc_media_parse(m_media);
     libvlc_media_player_set_media(m_player, m_media);
     m_eventManager = libvlc_media_player_event_manager(m_player);

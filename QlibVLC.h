@@ -26,6 +26,7 @@ QlibVLC: a C++ wrapper of libVLC for Qt, with audio part only.
 #include <QObject>
 #include <QMessageBox>
 #include <QFileInfo>
+#include <QDir>
 
 #include <vlc/vlc.h>
 

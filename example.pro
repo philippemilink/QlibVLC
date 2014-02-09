@@ -27,3 +27,8 @@ INCLUDEPATH += $$PWD/../../../../../../usr/include
 DEPENDPATH += $$PWD/../../../../../../usr/include
 
 unix:!macx:!symbian: PRE_TARGETDEPS += $$PWD/../../../../../../usr/lib/libvlc.a
+
+win32: LIBS += -L$$PWD/C:/Qt/Qt5.2.0/5.2.0/mingw48_32/lib/ -llibvlc
+
+INCLUDEPATH += $$PWD/C:/Qt/Qt5.2.0/5.2.0/mingw48_32/include
+DEPENDPATH += $$PWD/C:/Qt/Qt5.2.0/5.2.0/mingw48_32/include
