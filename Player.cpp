@@ -151,6 +151,7 @@ void Player::on_buttonStop_clicked()
     ui->sliderVolume->setEnabled(false);
 
     ui->valuePlayedTime->setText("");
+    ui->buttonPause->setText("Set pause");
 }
 
 
