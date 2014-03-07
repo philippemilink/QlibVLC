@@ -10,10 +10,10 @@
 			<nav>
 				
 				<ul>
-					<li class="qlibvlc-title"><a href="index.html">QlibVLC</a></li>
-					<li class="current"><a href="tutorials.html">Tutoriels</a></li>
-					<li><a href="documentation.html">Documentation</a></li>
-					<li><a href="download.html">Téléchargements</a></li>
+					<li class="qlibvlc-title"><a href="../index.html">QlibVLC</a></li>
+					<li class="current"><a href="../tutorials.html">Tutoriels</a></li>
+					<li><a href="../documentation.html">Documentation</a></li>
+					<li><a href="../download.html">Téléchargements</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -29,26 +29,31 @@
 			<h3>Installation de libVLC</h3>
 
 			<p>
-				Commencez par installer <a href="videolan.org">VLC Media Player</a>, si ce n'est pas déjà fait. Pendant l'installation, cochez que vous souhaitez également le kit de développement (peut-être nommé SDK).<br /><br />
-				Dans le dossier de VLC (ressemblant à <i>C:\Programmes\VideoLAN\VLC Media Player\</i>), allez dans le dossier <i>sdk</i>.<br />
+				Commencez par installer <a href="http://videolan.org">VLC Media Player</a>, si ce n'est pas déjà fait. Pendant l'installation, cochez que vous souhaitez également le kit de développement (peut-être nommé SDK).<br /><br />
+				Dans le dossier de VLC (ressemblant à <i>C:\Programmes\VideoLAN\VLC\</i>), allez dans le dossier <i>sdk</i>.<br />
 				Copiez tout le contenu du dossier <i>include</i> dans le dossier <i>include</i> de votre compilateur.<br />
 				De la même façon, copiez tout le contenu du dossier <i>lib</i> dans le dossier <i>lib</i> de votre compilateur.
 			</p>
 
-			<h3>Ajout de QlibVLC à votre projet Qt.</h3>
+			<h3>Ajout de QlibVLC à votre projet Qt</h3>
 
 			<p>
 				Dans votre projet Qt, ajoutez les fichiers <i>QlibVLC.cpp</i> et <i>QlibVLC.h</i>.<br /><br />
 				Ajoutez la bibliothèque de libVLC au linker de votre projet.<br />
-				Pour cela, faîtes un clic droit sur votre projet dans l'arborescence de Qt Creator, cliquez sur <i>Ajouter une bibliothèque externe</i>.<br />
-				Sélectionnez ensuite le fichier <i>libvlc.lib</i> présent dans le dossier <i>lib</i> de votre compilateur.<br /><br />
+				Pour cela, faîtes un clic droit sur votre projet dans l'arborescence de Qt Creator, cliquez sur <i>Ajouter une bibliothèquee</i>.<br />
+				Sélectionnez <i>Bibliothèque externe</i>.<br />
+				Dans le <i>Fichier de bibliothèque</i>, sélectionnez le fichier <i>libvlc.lib</i>, dans le dossier <i>lib</i> de votre compilateur.<br />
+				Décochez les autres plateformes que Windows et <i>Ajouter le suffixe "d" pour la version debug</i>.<br />
+				Suivant... Terminer...<br /><br />
 				Vous n'avez plus qu'à inclure QlibVLC dans votre code: #include "QlibVLC.h"
 			</p>
 
 			<h3>Quelques DLL...</h3>
 
 			<p>
-				*** Parler des DLLs ***
+				Pour que la compilation fonctionne, il faut ajouter deux DLLs dans le dossier racine de votre projet.<br />
+				Ces DLLs sont <i>libvlc.dll</i> et <i>libvlccore.dll</i>. Elles sont présentes dans le dossier du programme VLC.<br />
+				Il faut également copier le dossier <i>plugins</i> du dossier de VLC dans le dossier racine de votre projet. Le dossier est assez lourd, toutes les DLLs présentes dedans ne sont pas nécessaires pour faire fonctionner votre programme. Vous pouvez essayer de trouver les inutiles (celles qui, quand on les supprime, empêchent l'éxecution du programme) et les supprimer.
 			</p>
 		
 		</div>
