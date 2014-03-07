@@ -185,7 +185,7 @@ int QlibVLC::duration()
 // Return the duration of a given media (by the path) in milliseconds.
 int QlibVLC::getDuration(QString path)
 {
-    libvlc_media_t* media = libvlc_media_new_path(m_vlc, path.replace("/", "\\\\").toStdString().c_str());
+    libvlc_media_t* media = libvlc_media_new_path(m_vlc, QDir::toNativeSeparators(path).toStdString().c_str()); // Should work everywhere
 
     libvlc_media_parse(media);
 
