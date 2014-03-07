@@ -45,27 +45,35 @@ class QlibVLC : public QObject
     public:
     QlibVLC();
     ~QlibVLC();
-    int getDuration(QString path);
-    int duration();
+
+    // Manage medias:
     void setMedia(QString path);
+    void ejectMedia();
+
+    // Main commands:
     void play();
-    static void callbackTimeChanged(const libvlc_event_t *event, void* data);
-    static void callbackEndTrack(const libvlc_event_t *event, void* data);
-    void emitPositionChanged();
-    void emitEndTrack();
     void pause(bool pause);
     bool isPlaying();
+
+    // Attributes:
     int trackNumber();
     QString album();
     int year();
     QString artist();
     QString title();
-    void ejectMedia();
+    int duration();
+    int getDuration(QString path);
 
+    // Outputs:
     std::vector<QlibVLCOutput> getOutputs();
     void setOutput(QString name);
 
     int getVolume();
+
+    // For signals...
+    static void callbackTimeChanged(const libvlc_event_t *event, void* data);
+    void emitPositionChanged();
+    static void callbackEndTrack(const libvlc_event_t *event, void* data);
 
 
     public slots:
