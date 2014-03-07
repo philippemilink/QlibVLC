@@ -286,10 +286,12 @@ void QlibVLC::callbackEndTrack(const libvlc_event_t* event, void* data)
 /* A slot to set the current position of the media
  * The paramater value is the wished position in milliseconds
  */
-void QlibVLC::changePosition(float value)
+void QlibVLC::changePosition(int value)
 {
+    float newPosition = value / this->duration();
+
     if(isPlaying())
-        libvlc_media_player_set_position(m_player, value);
+        libvlc_media_player_set_position(m_player, newPosition);
 }
 
 

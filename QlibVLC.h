@@ -77,7 +77,7 @@ class QlibVLC : public QObject
 
 
     public slots:
-    void changePosition(float value);
+    void changePosition(int value);
     void stop();
     void setVolume(int newVolume);
 
