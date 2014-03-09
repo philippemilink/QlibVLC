@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>QlibVLC - Documentation</title>
+		<link rel="stylesheet" media="screen" type="text/css" title="Design" href="assets/css/design.css" />
+		<link rel="stylesheet" href="assets/css/prism.css" />
+	</head>
+	<body>
+		<header id="top">
+			<nav>
+				
+				<ul>
+					<li class="qlibvlc-title"><a href="index.html">QlibVLC</a></li>
+					<li><a href="tutorials.html">Tutoriels</a></li>
+					<li class="current"><a href="documentation.html">Documentation</a></li>
+					<li><a href="download.html">Téléchargements</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<div id="content" class="doc">
+
+			<h1>Documentation - Sommaire</h1>
+
+			<h3>Fonctions</h3>
+
+			<ul>
+				<li><a href="#constructor"><b>QlibVLC</b>()</a></li>
+
+				<li><a href="#set_media">void <b>setMedia</b>(QString path)</a></li>
+				<li><a href="#eject_media">void <b>ejectMedia</b>()</a></li>
+
+				<li><a href="#play">void <b>play</b>()</a></li>
+				<li><a href="#pause">void <b>pause</b>(bool pause)</a></li>
+				<li><a href="#is_playing">bool <b>isPlaying</b>()</a></li>
+
+				<li><a href="#track_number">int <b>trackNumber</b>()</a></li>
+				<li><a href="#album">QString <b>album</b>()</a></li>
+				<li><a href="#year">int <b>year</b>()</a></li>
+				<li><a href="#artist">QString <b>artist</b>()</a></li>
+				<li><a href="#title">QString <b>title</b>()</a></li>
+				<li><a href="#duration">int <b>duration</b>()</a></li>
+				<li><a href="#get_duration">int <b>getDuration</b>(QString path)</a></li>
+
+				<li><a href="#get_outputs">std::vector&lt;QlibVLCOutput&gt; <b>getOutputs</b>()</a></li>
+				<li><a href="#set_output">void <b>setOutput</b>(QString name)</a></li>
+
+				<li><a href="#get_volume">int <b>getVolume</b>()</a></li>
+			</ul>
+
+			<h3>Slots</h3>
+
+			<ul>
+				<li><a href="#change_position">void <b>changePosition</b>(int value)</a></li>
+				<li><a href="#stop">void <b>stop</b>()</a></li>
+				<li><a href="#set_volume">void <b>setVolume</b>(int newVolume)</a></li>
+			</ul>
+
+			<h3>Signaux</h3>
+
+			<ul>
+				<li><a href="#position_changed">void <b>positionChanged</b>(int newPosition)</a></li>
+				<li><a href="#end_track">void <b>endTrack</b>()</a></li>
+			</ul>
+
+			<h1>Fonctions - Détails</h1>
+
+			<section id="constructor">
+				<pre class="language-cpp"><code class="language-cpp">QlibVLC()</code></pre>
+				<p>Constructeur de la classe QlibVLC.<br /><br /><b>Utilisation:</b>
+					<pre><code class="language-cpp">QlibVLC* vlc = new QlibVLC();</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section>  
+
+			<section id="set_media">
+				<pre class="language-cpp"><code class="language-cpp">void setMedia(QString path)</code></pre>
+				<p>Sélectionne un fichier audio.<br /><br />
+					<b>Paramètre:</b><br />
+					<ul>
+						<li><code class="language-cpp">path</code>: le chemin du fichier audio. Le type de chemin (avec des slashs, des anti-slashs ou des doubles slashs) ne devrait normalement pas poser de problème...</li>
+					</ul><br />
+					<b>Utilisation:</b>
+					<pre><code class="language-cpp">vlc->setMedia("C:\Users\Admin\Music\Hit.mp3");</code></pre>
+					Lorsque l'utilisation du fichier est terminée, ou avant d'utiliser un autre fichier, il est bon de l'éjecter proprement en utilisant <a href="#eject_media">ejectMedia()</a>.
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section> 
+
+			<section id="eject_media">
+				<pre class="language-cpp"><code class="language-cpp">void ejectMedia()</code></pre>
+				<p>Ejecte le media actuellement utilisé par QlibVLC.<br />Si le fichier est actuellement en lecture, il est stoppé.<br /><br /><b>Utilisation:</b>
+					<pre><code class="language-cpp">vlc->eject_media();</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section>   
+
+			<section id="play">
+				<pre class="language-cpp"><code class="language-cpp">void play()</code></pre>
+				<p>Met en lecture le media actuellement utilisé par QlibVLC.<br /><br /><b>Utilisation:</b>
+					<pre><code class="language-cpp">vlc->play();</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section> 	
+
+			<section id="pause">
+				<pre class="language-cpp"><code class="language-cpp">void pause(bool pause)</code></pre>
+				<p>Met en pause ou reprend la lecture du media actuellement utilisé par QlibVLC.<br /><br />
+					<b>Paramètre:</b><br />
+					<ul>
+						<li><code class="language-cpp">pause</code>: si ce booléen vaut <code class="language-cpp">true</code>, alors la fonction enclanche la pause et si ce booléen vaut <code class="language-cpp">false</code>, la fonction enlève la pause.</li>
+					</ul><br />
+					<b>Utilisation:</b>
+					<pre><code class="language-cpp">vlc->pause(true); // Met en pause.</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section> 
+
+			<section id="is_playing">
+				<pre class="language-cpp"><code class="language-cpp">bool isPlaying()</code></pre>
+				<p>Indique si le media est en lecture ou non.<br /><br />
+					<b>Valeur de retour:</b><br />
+					Un booléen. <code class="language-cpp">true</code>: lecture en cours, sinon <code class="language-cpp">false</code>.<br /><br />
+					<b>Utilisation:</b>
+					<pre><code class="language-cpp">if(m_vlc->isPlaying())
+	label->setText("Lecture en cours..."); // Un label précedemment créé.
+else
+	label->setText("Plus de lecture.");</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section> 
+
+			<section id="track_number">
+				<pre class="language-cpp"><code class="language-cpp">int trackNumber()</code></pre>
+				<p>Retourne le numéro de la piste du média.<br /><br />
+					<b>Valeur de retour:</b><br />
+					Le numéro de piste. -1 si le numéro est inconnu.<br /><br />
+					<b>Utilisation:</b>
+					<pre><code class="language-cpp">int trackNumber = m_vlc->trackNumber();
+label->setText("Numéro de piste: " + QString::number(trackNumber));</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section>
+
+			<section id="album">
+				<pre class="language-cpp"><code class="language-cpp">QString album()</code></pre>
+				<p>Retourne le nom de l'album du média.<br /><br />
+					<b>Valeur de retour:</b><br />
+					Le nom de l'album, sous format <code class="language-cpp">QString</code>.<br /><br />
+					<b>Utilisation:</b>
+					<pre><code class="language-cpp">QString album = vlc->album();
+label->setText("Album: " + album);</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section>
+
+			<section id="year">
+				<pre class="language-cpp"><code class="language-cpp">int year()</code></pre>
+				<p>Retourne l'année de publication du média.<br /><br />
+					<b>Valeur de retour:</b><br />
+					L'année de sortie. 0 si l'année est inconnue.<br /><br />
+					<b>Utilisation:</b>
+					<pre><code class="language-cpp">int annee = vlc->year();
+label->setText("Année: " + QString::number(annee));</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section>	
+
+			<section id="artist">
+				<pre class="language-cpp"><code class="language-cpp">QString artist()</code></pre>
+				<p>Retourne le nom de l'artiste du média.<br /><br />
+					<b>Valeur de retour:</b><br />
+					Le nom de l'artiste, sous format <code class="language-cpp">QString</code>.<br /><br />
+					<b>Utilisation:</b>
+					<pre><code class="language-cpp">QString artiste = vlc->artist();
+label->setText("Artiste: " + artiste);</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section>
+
+			<section id="title">
+				<pre class="language-cpp"><code class="language-cpp">QString title()</code></pre>
+				<p>Retourne le titre du média.<br /><br />
+					<b>Valeur de retour:</b><br />
+					Le titre du média, sous format <code class="language-cpp">QString</code>. Si le titre n'est pas précisé dans les attributs du média (tags ID3...), la valeur retournée est le nom du fichier sans l'extension.<br /><br />
+					<b>Utilisation:</b>
+					<pre><code class="language-cpp">QString titre = vlc->title();
+label->setText("Titre: " + title);</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section>	
+
+			<section id="duration">
+				<pre class="language-cpp"><code class="language-cpp">int duration()</code></pre>
+				<p>Retourne la durée du média actuellement utilisé par QlibVLC.<br /><br />
+					<b>Valeur de retour:</b><br />
+					La durée du média, en millisecondes.<br /><br />
+					<b>Utilisation:</b>
+					<pre><code class="language-cpp">int duree = vlc->duration();
+label->setText("Durée: " + QString::number(duree / 1000) + "s");</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section>
+
+			<section id="get_duration">
+				<pre class="language-cpp"><code class="language-cpp">int getDuration(QString path)</code></pre>
+				<p>Retourne la durée du média, dont le chemin est passé en paramètre.<br /><br />
+					<b>Paramètre:</b><br />
+					<ul>
+						<li><code class="language-cpp">path</code>: le chemin du fichier audio. Le type de chemin (avec des slashs, des anti-slashs ou des doubles slashs) ne devrait normalement pas poser de problème...</li>
+					</ul><br />					
+					<b>Valeur de retour:</b><br />
+					La durée du média, en millisecondes.<br /><br />
+					<b>Utilisation:</b>
+					<pre><code class="language-cpp">int duree = vlc->getDuration("C:\Users\Admin\Music\Hit.mp3");
+label->setText("Durée: " + QString::number(duree / 1000) + "s");</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section>
+			
+			<section id="get_outputs">
+				<pre class="language-cpp"><code class="language-cpp">std::vector&lt;QlibVLCOutput&gt; getOutputs()</code></pre>
+				<p>Retourne les sorties audio disponibles sur l'ordinateur.<br /><br />
+			
+					<b>Valeur de retour:</b><br />
+					Un tableau <code class="language-cpp">vector</code> de structures <code class="language-cpp">QlibVLCOutput</code>.<br />
+					Cette structure possède deux variables: <code class="language-cpp">name</code>, de type <code class="language-cpp">QString</code>, qui est le nom de la sortie, mais plus sous la forme d'un identifiant; et <code class="language-cpp">description</code>, de type <code class="language-cpp">QString</code>, qui est une description de cette sortie audio, mais en réalité, il s'agit d'un nom plus compréhensible pour l'utilisateur.<br /><br />
+					<b>Utilisation:</b>
+					<pre><code class="language-cpp">std::vector&lt;QlibVLCOutput&gt; outputs = vlc->getOutputs();
+comboBoxOutputs->addItem("No specified");
+for(int i=0; i&lt;outputs.size(); i++)
+{
+	comboBoxOutputs-&gt;addItem(outputs[i].description);
+}</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section>
+
+			<section id="get_volume">
+				<pre class="language-cpp"><code class="language-cpp">int getVolume()</code></pre>
+				<p>Retourne le volume actuel.<br /><br />
+					<b>Valeur de retour:</b><br />
+					Le volume, compris entre 0 (muet) et 100.<br /><br />
+					<b>Utilisation:</b>
+					<pre><code class="language-cpp">int volume = vlc->getVolume();
+label->setText("Volume: " + QString::number(volume));</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section>
+
+
+<!------------------------------------------------------------------------------------------------------ SLOTS -------------------------->
+			<h1>Slots - Détails</h1>
+
+			<section id="change_position">
+				<pre class="language-cpp"><code class="language-cpp">void changePosition(int value)</code></pre>
+				<p>Change la position dans le média.<br /><br />
+					<b>Paramètre:</b><br />
+					<ul>
+						<li><code class="language-cpp">value</code>: la nouvelle position souhaitée dans le média, en millisecondes.</li>
+					</ul><br />
+					<b>Utilisation:</b>
+					<pre><code class="language-cpp">connect(sliderPosition, SIGNAL(sliderMoved(int)), vlc, SLOT(changePosition(int)));</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section>
+
+			<section id="stop">
+				<pre class="language-cpp"><code class="language-cpp">void stop()</code></pre>
+				<p>Arrête la lecture du média.<br /><br />
+					<b>Utilisation:</b>
+					<pre><code class="language-cpp">connect(buttonStop, SIGNAL(clicked()), vlc, SLOT(stop()));</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section>
+
+			<section id="set_volume">
+				<pre class="language-cpp"><code class="language-cpp">void setVolume(int newVolume)</code></pre>
+				<p>Change le volume.<br /><br />
+					<b>Paramètre:</b><br />
+					<ul>
+						<li><code class="language-cpp">newVolume</code>: le nouveau volume, compris entre 0 et 100.</li>
+					</ul><br />
+					<b>Utilisation:</b>
+					<pre><code class="language-cpp">connect(sliderVolume, SIGNAL(sliderMoved(int)), vlc, SLOT(setVolume(int)));</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section>
+
+
+<!-------------------------------------------------------------------------------------------------------- SIGNALS ------------------------------>
+			<h1>Signaux - Détails</h1>
+
+			<section id="position_changed">
+				<pre class="language-cpp"><code class="language-cpp">void positionChanged(int newPosition)</code></pre>
+				<p>Signal émis lorsque la position dans le fichier audio change.<br /><br />
+					<b>Variable transmise:</b><br />
+					<ul>
+						<li><code class="language-cpp">value</code>: la nouvelle position dans le média, en millisecondes.</li>
+					</ul><br />
+					<b>Utilisation:</b>
+					<pre><code class="language-cpp">// Dans le constructeur d'un player (par exemple !):
+connect(vlc, SIGNAL(positionChanged(int)), this, SLOT(timeChanged(int)));
+
+// Le slot timeChanged:
+void Player::timeChanged(int newTime)
+{
+    valuePlayedTime->setText("Position: " + QString::number(newTime/1000) + "s");
+}</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section>
+
+			<section id="end_track">
+				<pre class="language-cpp"><code class="language-cpp">void endTrack()</code></pre>
+				<p>Signal émis lorsque la lecture du fichier audio est terminée.<br /><br />
+					<b>Utilisation:</b>
+					<pre><code class="language-cpp">// Dans le constructeur d'un player (par exemple !):
+connect(vlc, SIGNAL(endTrack()), this, SLOT(endPlaying()));
+
+// Le slot endPlaying:
+void Player::endPlaying()
+{
+    vlc->ejectMedia();
+
+}</code></pre>
+				</p>
+				<p class="to_top"><a href="#top">Haut</a></p>
+			</section> 				
+		</div>
+
+		<script src="assets/js/prism.js"></script>
+	</body>
+</html>
