@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>QlibVLC - Installation sous Linux</title>
+		<link rel="stylesheet" media="screen" type="text/css" title="Design" href="../assets/css/design.css" />
+	</head>
+	<body>
+		<header>
+			<nav>
+				
+				<ul>
+					<li class="qlibvlc-title"><a href="../index.html">QlibVLC</a></li>
+					<li class="current"><a href="../tutorials.html">Tutoriels</a></li>
+					<li><a href="../documentation.html">Documentation</a></li>
+					<li><a href="../download.html">Téléchargements</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<div id="content">
+
+			<h1>Installation de QlibVLC sous Linux</h1>
+
+			<p>
+				QlibVLC est en réalité une classe C++ qui utilise libVLC. QlibVLC a donc comme dépendance libVLC.	
+			</p>
+
+			<h3>Installation de libVLC</h3>
+
+			<p>
+				libVLC n'est pas installé par défaut avec VLC sur Linux.<br />
+				Il faut installer le paquet <i>libvlc-dev</i>:
+				<span class="code-console">sudo apt-get install libvlc-dev</span>
+			</p>
+
+			<h3>Ajout de QlibVLC à votre projet Qt.</h3>
+
+			<p>
+				Dans votre projet Qt, ajoutez les fichiers <i>QlibVLC.cpp</i> et <i>QlibVLC.h</i>.<br /><br />
+				Ajoutez la bibliothèque de libVLC au linker de votre projet.<br />
+				Pour cela, faîtes un clic droit sur votre projet dans l'arborescence de Qt Creator, cliquez sur <i>Ajouter une bibliothèque</i> (ou <i>Add library</i>).<br />
+				Sélectionnez <i>Bibliothèque externe</i> (ou <i>External library</i>).<br />
+				Indiquer dans le chemin de la bibliothèque le fichier <i>/usr/lib/libvlc.a</i>.<br />
+				Décochez toutes les autres plateformes que Linux.<br />
+				Suivant... Terminer...<br /><br />
+				Vous n'avez plus qu'à inclure QlibVLC dans votre code: #include "QlibVLC.h"
+			</p>
+		
+		</div>
+	</body>
+</html>
