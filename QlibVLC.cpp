@@ -1,6 +1,7 @@
 /*************************************************************************
 QlibVLC: a C++ wrapper of libVLC for Qt, with audio part only.
     Copyright (C) 2014 - Philippe SWARTVAGHER
+    Version 0.1
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
