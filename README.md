@@ -2,10 +2,13 @@ QlibVLC
 =======
 
 A C++ wrapper of libVLC for Qt, with audio part only
+
 Current version: 0.1
 
 Website: [philippemilink.github.io/QlibVLC/](http://philippemilink.github.io/QlibVLC/)
+
 Documentation: [philippemilink.github.io/QlibVLC/documentation.html](http://philippemilink.github.io/QlibVLC/documentation.html)
+
 How to install: [philippemilink.github.io/QlibVLC/tutorials.html](http://philippemilink.github.io/QlibVLC/tutorials.html)
 
 
