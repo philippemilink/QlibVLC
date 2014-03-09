@@ -4,6 +4,7 @@
 		<meta charset="utf-8" />
 		<title>QlibVLC - Installation sous Windows</title>
 		<link rel="stylesheet" media="screen" type="text/css" title="Design" href="../assets/css/design.css" />
+		<link rel="stylesheet" href="../assets/css/prism.css" />
 	</head>
 	<body>
 		<header>
@@ -45,7 +46,8 @@
 				Dans le <i>Fichier de bibliothèque</i>, sélectionnez le fichier <i>libvlc.lib</i>, dans le dossier <i>lib</i> de votre compilateur.<br />
 				Décochez les autres plateformes que Windows et <i>Ajouter le suffixe "d" pour la version debug</i>.<br />
 				Suivant... Terminer...<br /><br />
-				Vous n'avez plus qu'à inclure QlibVLC dans votre code: #include "QlibVLC.h"
+				Vous n'avez plus qu'à inclure QlibVLC dans votre code:
+				<pre class="language-cpp"><code>#include "QlibVLC.h"</code></pre>
 			</p>
 
 			<h3>Quelques DLL...</h3>
@@ -57,5 +59,6 @@
 			</p>
 		
 		</div>
+		<script src="../assets/js/prism.js"></script>
 	</body>
 </html>
