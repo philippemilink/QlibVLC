@@ -289,7 +289,7 @@ void QlibVLC::callbackEndTrack(const libvlc_event_t* event, void* data)
  */
 void QlibVLC::changePosition(int value)
 {
-    float newPosition = value / this->duration();
+    float newPosition = (float) value / this->duration();
 
     if(isPlaying())
         libvlc_media_player_set_position(m_player, newPosition);
